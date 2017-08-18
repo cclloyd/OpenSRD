@@ -1,0 +1,15 @@
+{
+  "name": "Variable Vitality",
+  "school": "conjuration",
+  "subschool": "healing",
+  "level": "druid 7",
+  "domain": "chaos 7",
+  "elementalschool": "none",
+  "castingtime": "V, S, DF (of a god of chaos)",
+  "components": "1 standard action",
+  "range": "close (25 ft. + 5ft./2 levels)",
+  "area": "40-ft.-radius spread",
+  "duration": "1 round/2 levels",
+  "save": "Will half (possibly harmless); see text",
+  "sr": "yes (possibly harmless); see text"
+}

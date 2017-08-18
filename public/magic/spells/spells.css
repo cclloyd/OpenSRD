@@ -1,0 +1,51 @@
+/* Filter functions
+backdrop-filter: blur(2px);
+backdrop-filter: brightness(60%);
+backdrop-filter: contrast(40%);
+backdrop-filter: drop-shadow(4px 4px 10px blue);
+backdrop-filter: grayscale(30%);
+backdrop-filter: hue-rotate(120deg);
+backdrop-filter: invert(70%);
+backdrop-filter: opacity(20%);
+backdrop-filter: sepia(90%);
+backdrop-filter: saturate(80%);
+*/
+#spell-stats {
+  width: 80%;
+  margin-left: 20px; }
+
+.spell-info-header {
+  display: block;
+  margin-left: 10px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  text-transform: uppercase;
+  margin: 10px auto 10px auto;
+  font-size: 12px; }
+
+#spell {
+  width: 100%;
+  margin: auto;
+  padding: 10px 20px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+#spell-text {
+  width: 100%;
+  padding: 5px;
+  word-wrap: normal;
+  font-size: 16px;
+  margin-bottom: 500px;
+  white-space: pre-wrap; }
+
+#spell-description {
+  margin-top: 40px; }
+
+#header {
+  width: 100%; }
+
+.internal_url {
+  color: #003965; }
+
+/*# sourceMappingURL=spells.css.map */

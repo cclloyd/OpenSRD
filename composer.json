@@ -1,0 +1,23 @@
+{
+	"name": "cclloyd/my-contacts",
+    "description": "Simple RESTful API for contacts management",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "cclloyd",
+            "email": "fuck@you.com"
+        }
+    ],
+    "require": {
+        "slim/slim": "^3.0",
+		"catfan/Medoo": "^1.4"
+    },
+    "archive": {
+        "exclude": ["vendor", ".DS_Store", "*.log"]
+    },
+    "autoload": {
+        "psr-0": {
+            "API": "lib/"
+        }
+    } 
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Native Versatility",
+  "prereqs": "Kineticist Level 7th, Expanded Element class feature (different element than native element)",
+  "benefit": "If your native element provides a second offensive simple blast, you gain this simple blast for the purpose of using it in any composite blasts you would then qualify for.",
+  "flavortext": "You have half of your potential that you're not even using."	
+}

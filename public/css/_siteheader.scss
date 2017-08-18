@@ -1,0 +1,30 @@
+/* CSS Document */
+
+#header {
+	width: 100%;
+	#menu {
+		width: 100%;
+		background: rgba(0,0,0,.25);
+		text-align: center;
+		li {
+			display: inline-block;
+			margin: 0;
+			padding: 0;
+			list-style-type: none;
+			a {
+				text-decoration: none;
+				font-size: 24px;
+				padding: 20px 20px;
+				line-height: 24px;
+				color: hsla(0,0,100,.75);
+	
+			}
+			background: rgba(0,0,0,.25);
+			@include fix-padding();
+			&:hover {
+				background: rgba(0,0,0,.1);
+				transition: background ease .5s;
+			}
+		}
+	}
+}

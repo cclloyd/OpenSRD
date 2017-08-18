@@ -1,0 +1,269 @@
+@charset "utf-8";
+
+@mixin fix-padding() {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;	
+}
+
+@mixin disable-highlighting() {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none; /* Webkit */
+	-moz-user-select: none;    /* Firefox */
+	-ms-user-select: none;     /* IE 10  */
+
+	/* Currently not supported in Opera but will be soon */
+	-o-user-select: none;
+	user-select: none;  
+}
+
+@font-face {
+	font-family: Celtic;
+	src: url('/font/Celtic.ttf');
+}
+
+$h: 210;
+$s: 0; // default: 3
+
+#logo {
+	font-family: 'Celtic';
+	font-size: 46px;
+	color: hsl($h,$s,10);
+}
+
+/* Filter functions
+backdrop-filter: blur(2px);
+backdrop-filter: brightness(60%);
+backdrop-filter: contrast(40%);
+backdrop-filter: drop-shadow(4px 4px 10px blue);
+backdrop-filter: grayscale(30%);
+backdrop-filter: hue-rotate(120deg);
+backdrop-filter: invert(70%);
+backdrop-filter: opacity(20%);
+backdrop-filter: sepia(90%);
+backdrop-filter: saturate(80%);
+*/
+
+
+
+html {
+	background-color: hsl($h,$s,15);
+	//background-image: url('/img/headerbgfull.png');
+	background-attachment: fixed;
+	background-position: top center;
+	box-sizing: border-box !important;
+	-webkit-box-sizing: border-box !important;
+	-moz-box-sizing: border-box !important;
+	box-sizing: border-box !important;
+}
+body {
+	background-color: hsl($h,$s,25) ;
+	//background-image: url('/img/headerbgfull2.png');
+	background-attachment: fixed;
+	background-position: top center;
+	font-family: Varela; 
+	font-size: 14px;
+	width: 1000px;
+	margin: 10px auto;
+	border: 1px solid hsl($h, $s, 6);
+	box-shadow: 0 0 50px hsla($h, $s, 0, .5);
+}
+#wrapper {
+	width: 100%;
+}
+h1 {
+	font-family: Balthazar;
+	font-size: 32px !important;
+}
+
+.internal_url {
+	color: #003965;
+}
+
+@mixin abs-full() {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+@mixin shade-bg($shade) {
+	background-color: rgb($shade, $shade, $shade);
+}
+@mixin shade-color($shade) {
+	color: rgb($shade, $shade, $shade);
+}
+
+.table    { display: inline-table; border-collapse: collapse;}
+.tr       { display: table-row }
+.thead    { display: table-header-group }
+.tbody    { display: table-row-group }
+.tfoot    { display: table-footer-group }
+.col      { display: table-column }
+.colgroup { display: table-column-group }
+.td       { display: table-cell; vertical-align: middle; }
+.th   	  { display: table-cell; vertical-align: middle; font-weight: bold;}
+.caption  { display: table-caption }
+
+
+
+
+
+
+
+$radius: 2px;
+$sheet-color: #36393e;
+$card-color: #484b52;
+$card-text-color: #c5c5c5;
+$card-border: #292929;
+$card-header: #585858;
+
+
+$sheet-bg: 			hsl($h, $s, 26);
+$sheet-color: 		hsl($h, $s, 80);
+$sheet-input: 		hsl($h, $s, 40);
+$sheet-info-color: 	hsl($h, $s, 50);
+$th-bg: 			hsl($h, $s, 10);
+$input-bg: 			hsl($h, $s, 30);
+
+
+@import '_siteheader.scss';
+
+@import '_loading.scss';
+@import '_pageuniversal.scss';
+@import '_gridpage.scss';
+@import '_pagestatic.scss';
+
+$xbox: #107C10;
+$save-1: #0c4405;
+$save-2: #1a860d;
+$save-3: #4ca306;
+$save-4: #59bc13;
+$duration: 6s;
+#save-banner {
+	text-align: center;
+	position: fixed;
+	z-index: 100000;
+	.run-save-anim {
+		animation-name: xboxanim;
+	}
+	.save-color {
+		width: 300px;
+		height: 40px;
+		position: fixed;
+		top: 25px;
+		display: inline-block;
+		transform-origin: center;
+		//animation-name: expanding; achievementLoaderAnimationFrames
+		transform: scaleX(0.00) scaleY(0.00);
+		left: calc(50% - 150px);
+		//animation-duration: 1.25s;
+		//animation-timing-function: ease-out;
+		animation-fill-mode: forwards;
+		animation-iteration-count: 1;
+		animation-timing-function: ease-in-out;
+		&:nth-of-type(1) {
+			background-color: lighten($xbox, 5%);
+			animation-duration: $duration;
+		}
+		&:nth-of-type(2) {
+            background-color: $xbox;
+            animation-delay: 0.25s;
+            animation-duration: $duration - 0.5;
+        }
+
+        &:nth-of-type(3) {
+            background-color: darken($xbox, 5%);
+            animation-delay: 0.5s;
+            animation-duration: $duration - 1;
+        }
+
+        &:nth-of-type(4) {
+            background-color: $xbox;
+            animation-delay: 0.75s;
+            animation-duration: $duration - 1.5;
+        }
+
+        &:nth-of-type(5) {
+            background-color: lighten($xbox, 5%);
+            animation-delay: 1s;
+            animation-duration: $duration - 2;
+			line-height: 40px;
+			font-weight: bold;
+			text-shadow: 0 -1px 0 rgba(0,0,0,.15), 0 1px 0 rgba(255,255,255,.25);
+			color: darken($xbox, 10%);
+			font-size: 24px;
+        }
+	}
+}
+@keyframes expanding {
+	0% { width: 0%;	margin-left: 0%;		}
+	20% { width: 100%; margin-left: -50%		}
+	20% { width: 100%; margin-left: -50%		}
+}
+@keyframes xboxanim {
+    0% {
+        transform: scaleX(0.00) scaleY(1.00);
+    }
+
+    10% {
+        transform: scaleX(1.00) scaleY(1.00);
+    }
+
+    90% {
+        transform: scaleX(1.00) scaleY(1.00);
+    }
+
+    100% {
+        transform: scaleX(0.00) scaleY(1.00);
+    }
+}
+* {
+	transform-origin: center;
+}
+.bounce {
+	animation-play-state: paused;
+	animation-duration: .35s;
+	animation-fill-mode: forwards;
+	animation-iteration-count: 1;
+	animation-name: bounce-effect;
+	transform-origin: center;
+	animation-play-state: running;
+}
+
+@keyframes bounce-effect {
+	0% { transform: scale(0.50)  }
+	50% { transform: scale(1.025)  }
+	70% { transform: scale(0.975)  }
+	100% { transform: scale(1.00)  }
+}
+
+.button-bounce {
+	animation-duration: .35s;
+	//animation-fill-mode: forwards;
+	animation-iteration-count: infinite;
+	animation-name: button-bounce2;
+	//animation-name: bounce-effect;
+	transform-origin: center;
+	animation-play-state: running;
+}
+
+@keyframes button-bounce {
+	0% { transform: scale(1.00)  }
+	25% { transform: scale(0.925)  }
+	50% { transform: scale(1.025)  }
+	65% { transform: scale(0.925)  }
+	80% { transform: scale(1.025)  }
+	100% { transform: scale(1.00)  }
+}
+
+@keyframes button-bounce2 {
+	0% { transform: scale(1.00)  }
+	25% { transform: scale(0.975)  }
+	50% { transform: scale(1.015)  }
+	65% { transform: scale(0.975)  }
+	80% { transform: scale(1.015)  }
+	100% { transform: scale(1.00)  }
+}
+
+
+
+
