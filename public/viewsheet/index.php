@@ -25,10 +25,10 @@ function getSheet($sheetid) {
 	//$link = new mysqli('localhost', 'srduser', 'these7enpillar');
 	$id = $sheetid;
 	$query = "SELECT * from sheets WHERE id='$id'";
-	$data = db_single($query);
+	$data = db_single($query); 
 	//$result = $link->query($query);
-	$query = "SELECT * from sheets_blocks WHERE id='$id'";
-	$data->textblocks = db_single($query);
+	//$query = "SELECT * from sheets_blocks WHERE id='$id'";
+	//$data->text = db_single($query);
 	//$response = $response->withJson($data, 201);
 	//$response = $response->withJson($data, 201);
 	//echo "FUCK2";
@@ -57,6 +57,9 @@ function getSheetBlocks($sheetid) {
 </head>
 
 <body>
+
+
+
 <?php
 	$sheetid = $_GET['id'];	
 	session_start();
@@ -75,13 +78,13 @@ function getSheetBlocks($sheetid) {
 </div>
 <?php 
 $id = $sheetid;
+	
 $data = getSheet($id);
 $sheet = json_decode($data);
 $data = getSheetBlocks($id);
-	
-
 $sheet->text = json_decode($data);
-$name = $sheet->name;
+	
+$name = $sheet->Name;
 
 function getMod($num) {
 	$val = floor(($num - 10)/2);
@@ -152,156 +155,254 @@ function getMod($num) {
 	
 	
 	<div class="player-info">
-		<div class="player-info-block double-wide"><input type="text" class="sheet-input" name="Name" title="Name" value="<?php echo "$sheet->Name"; ?>" />			<span class="info-row">Name</span></div>
-		<div class="player-info-block double-wide"><input type="text" class="sheet-input" name="Player" title="Player" value="<?php echo "$sheet->Player"; ?>" />	<span class="info-row">Player</span></div>
-		<div class="player-info-block double-wide"><input type="text" class="sheet-input" name="Class" title="Class" value="<?php echo "$sheet->Class"; ?>" />		<span class="info-row">Class</span></div>
-		<div class="player-info-block double-wide"><input type="text" class="sheet-input" name="Race" title="Race" value="<?php echo "$sheet->Race"; ?>" />			<span class="info-row">Race</span></div>
-		<div class="player-info-block"><input type="text" class="sheet-input" name="Alignment" title="Alignment" value="<?php echo "$sheet->Alignment"; ?>" />	<span class="info-row">Alignment</span></div>
-		<div class="player-info-block"><input type="text" class="sheet-input" name="Campaign" title="Campaign" value="<?php echo "$sheet->Campaign"; ?>" />		<span class="info-row">Campaign</span></div>
-		<div class="player-info-block"><input type="text" class="sheet-input" name="Deity" title="Deity" value="<?php echo "$sheet->Deity"; ?>" />				<span class="info-row">Deity</span></div>
-		<div class="player-info-block"><input type="text" class="sheet-input" name="name" title="name" value="<?php echo "$sheet->Level"; ?>" />				<span class="info-row">Level</span></div>
-		<div class="player-info-block"><input type="text" class="sheet-input" name="player" title="player" value="<?php echo "$sheet->Size"; ?>" />				<span class="info-row">Size</span></div>
-		<div class="player-info-block"><input type="text" class="sheet-input" name="Age" title="Age" value="<?php echo "$sheet->Age"; ?>" />					<span class="info-row">Age</span></div>
-		<div class="player-info-block"><input type="text" class="sheet-input" name="Gender" title="Gender" value="<?php echo "$sheet->Gender"; ?>" />			<span class="info-row">Gender</span></div>
-		<div class="player-info-block"><input type="text" class="sheet-input" name="Height" title="Height" value="<?php echo "$sheet->Height"; ?>" />			<span class="info-row">Height</span></div>
-		<div class="player-info-block"><input type="text" class="sheet-input" name="Weight" title="Weight" value="<?php echo "$sheet->Weight"; ?>" />			<span class="info-row">Weight</span></div>
-		<div class="player-info-block"><input type="text" class="sheet-input" name="Eyes" title="Eyes" value="<?php echo "$sheet->Eyes"; ?>" />					<span class="info-row">Eyes</span></div>
-		<div class="player-info-block"><input type="text" class="sheet-input" name="Hair" title="Hair" value="<?php echo "$sheet->Hair"; ?>" />					<span class="info-row">Hair</span></div>
-		<div class="player-info-block"><input type="text" class="sheet-input" name="XPCurrent" title="XPCurrent" value="<?php echo "$sheet->XPCurrent"; ?>" />	<span class="info-row">Current XP</span></div>
-		<div class="player-info-block"><input type="text" class="sheet-input" name="XPNext" title="XPNext" value="<?php echo "$sheet->XPNext"; ?>" />			<span class="info-row">XP to next level</span></div>
-		<div class="player-info-block"><input type="text" class="sheet-input" name="XPChange" title="XPChange" value="<?php echo "$sheet->XPChange"; ?>" />		<span class="info-row">XP Change</span></div>
-		<div class="player-info-block"><input type="text" class="sheet-input" name="XPSpeed" title="XPSpeed" value="<?php echo "$sheet->XPSpeed"; ?>" />		<span class="info-row">XP Speed (S/M/F)</span></div>
-		<div class="player-info-block"><input type="text" class="sheet-input" name="Mythic" title="Mythic" value="Trickster 1" />									<span class="info-row">Mythic</span></div>
+		<div class="player-info-block double-wide"><input type="text" autocomplete="off" class="sheet-input" name="Name" title="Name" value="<?php echo "$sheet->Name"; ?>" />			<span class="info-row">Name</span></div>
+		<div class="player-info-block double-wide"><input type="text" autocomplete="off" class="sheet-input" name="Player" title="Player" value="<?php echo "$sheet->Player"; ?>" />	<span class="info-row">Player</span></div>
+		<div class="player-info-block double-wide"><input type="text" autocomplete="off" class="sheet-input" name="Class" title="Class" value="<?php echo "$sheet->Class"; ?>" />		<span class="info-row">Class</span></div>
+		<div class="player-info-block double-wide"><input type="text" autocomplete="off" class="sheet-input" name="Race" title="Race" value="<?php echo "$sheet->Race"; ?>" />			<span class="info-row">Race</span></div>
+		<div class="player-info-block"><input type="text" autocomplete="off" class="sheet-input" name="Alignment" title="Alignment" value="<?php echo "$sheet->Alignment"; ?>" />	<span class="info-row">Alignment</span></div>
+		<div class="player-info-block"><input type="text" autocomplete="off" class="sheet-input" name="Campaign" title="Campaign" value="<?php echo "$sheet->Campaign"; ?>" />		<span class="info-row">Campaign</span></div>
+		<div class="player-info-block"><input type="text" autocomplete="off" class="sheet-input" name="Deity" title="Deity" value="<?php echo "$sheet->Deity"; ?>" />				<span class="info-row">Deity</span></div>
+		<div class="player-info-block"><input type="text" autocomplete="off" class="sheet-input" name="Level" title="Level" value="<?php echo "$sheet->Level"; ?>" />				<span class="info-row">Level</span></div>
+		<div class="player-info-block"><input type="text" autocomplete="off" class="sheet-input" name="Size" title="Size" value="<?php echo "$sheet->Size"; ?>" />				<span class="info-row">Size</span></div>
+		<div class="player-info-block"><input type="text" autocomplete="off" class="sheet-input" name="Age" title="Age" value="<?php echo "$sheet->Age"; ?>" />					<span class="info-row">Age</span></div>
+		<div class="player-info-block"><input type="text" autocomplete="off" class="sheet-input" name="Gender" title="Gender" value="<?php echo "$sheet->Gender"; ?>" />			<span class="info-row">Gender</span></div>
+		<div class="player-info-block"><input type="text" autocomplete="off" class="sheet-input" name="Height" title="Height" value="<?php echo "$sheet->Height"; ?>" />			<span class="info-row">Height</span></div>
+		<div class="player-info-block"><input type="text" autocomplete="off" class="sheet-input" name="Weight" title="Weight" value="<?php echo "$sheet->Weight"; ?>" />			<span class="info-row">Weight</span></div>
+		<div class="player-info-block"><input type="text" autocomplete="off" class="sheet-input" name="Eyes" title="Eyes" value="<?php echo "$sheet->Eyes"; ?>" />					<span class="info-row">Eyes</span></div>
+		<div class="player-info-block"><input type="text" autocomplete="off" class="sheet-input" name="Hair" title="Hair" value="<?php echo "$sheet->Hair"; ?>" />					<span class="info-row">Hair</span></div>
+		<div class="player-info-block"><input type="text" autocomplete="off" class="sheet-input" name="XPCurrent" title="XPCurrent" value="<?php echo "$sheet->XPCurrent"; ?>" />	<span class="info-row">Current XP</span></div>
+		<div class="player-info-block"><input type="text" autocomplete="off" class="sheet-input" name="XPNext" title="XPNext" value="<?php echo "$sheet->XPNext"; ?>" />			<span class="info-row">XP to next level</span></div>
+		<div class="player-info-block"><input type="text" autocomplete="off" class="sheet-input" name="XPChange" title="XPChange" value="<?php echo "$sheet->XPChange"; ?>" />		<span class="info-row">XP Change</span></div>
+		<div class="player-info-block"><input type="text" autocomplete="off" class="sheet-input" name="XPSpeed" title="XPSpeed" value="<?php echo "$sheet->XPSpeed"; ?>" />		<span class="info-row">XP Speed (S/M/F)</span></div>
+		<div class="player-info-block"><input type="text" autocomplete="off" class="sheet-input" name="Mythic" title="Mythic" value="Trickster 1" />									<span class="info-row">Mythic</span></div>
 	</div>
 	
-	<div class="table ability-scores">
-		<div class="tr">
-			<div class="th">STR</div>
-			<div class="td"><input autocomplete="off" type="number" class="sheet-input" name="Str" title="Str" value="<?php echo "$sheet->Str"; ?>" /></div>
-			<div class="td"><input autocomplete="off" type="text" class="sheet-input" name="StrMod" title="StrMod" value="<?php echo getMod($sheet->Str); ?>" readonly /></div>
-			<div class="td"><input autocomplete="off" type="number" class="sheet-input" name="StrTemp" title="StrTemp" value="<?php echo "$sheet->StrTemp"; ?>" /></div>
-			<div class="td"><input autocomplete="off" type="text" class="sheet-input" name="StrTempMod" title="StrTempMod" value="<?php echo getMod($sheet->StrTemp); ?>" readonly /></div>
+	<div class="ability-scores static-card">
+		<div class="ability-block">
+			<span class="info-row"> </span>
+			<span class="info-row">Score</span>
+			<span class="info-row">Mod</span>
+			<span class="info-row">Temp</span>
+			<span class="info-row">Temp Mod</span>
 		</div>
-		<div class="tr">
-			<div class="th">DEX</div>
-			<div class="td"><input autocomplete="off" type="number" class="sheet-input" name="Dex" title="Dex" value="<?php echo "$sheet->Dex"; ?>" /></div>
-			<div class="td"><input autocomplete="off" type="text" class="sheet-input" name="DexMod" title="DexMod" value="<?php echo getMod($sheet->Dex); ?>" readonly /></div>
-			<div class="td"><input autocomplete="off" type="number" class="sheet-input" name="DexTemp" title="DexTemp" value="<?php echo "$sheet->DexTemp"; ?>" /></div>
-			<div class="td"><input autocomplete="off" type="text" class="sheet-input" name="DexTempMod" title="DexTempMod" value="<?php echo getMod($sheet->DexTemp); ?>" readonly /></div>
+		<div class="ability-block">
+			<div class="header-block">STR</div>
+			<input autocomplete="off" type="number" class="sheet-input" name="Str" title="Str" value="<?php echo "$sheet->Str"; ?>" />
+			<input autocomplete="off" type="text" class="sheet-input" name="StrMod" title="StrMod" value="<?php echo getMod($sheet->Str); ?>" readonly />
+			<input autocomplete="off" type="number" class="sheet-input" name="StrTemp" title="StrTemp" value="<?php echo "$sheet->StrTemp"; ?>" />
+			<input autocomplete="off" type="text" class="sheet-input" name="StrTempMod" title="StrTempMod" value="<?php echo getMod($sheet->StrTemp); ?>" readonly />
 		</div>
-		<div class="tr">
-			<div class="th">CON</div>
-			<div class="td"><input autocomplete="off" type="number" class="sheet-input" name="Con" title="Con" value="<?php echo "$sheet->Con"; ?>" /></div>
-			<div class="td"><input autocomplete="off" type="text" class="sheet-input" name="ConMod" title="ConMod" value="<?php echo getMod($sheet->Con); ?>" readonly /></div>
-			<div class="td"><input autocomplete="off" type="number" class="sheet-input" name="ConTemp" title="ConTemp" value="<?php echo "$sheet->ConTemp"; ?>" /></div>
-			<div class="td"><input autocomplete="off" type="text" class="sheet-input" name="ConTempMod" title="ConTempMod" value="<?php echo getMod($sheet->ConTemp); ?>" readonly /></div>
+		<div class="ability-block">
+			<div class="header-block">DEX</div>
+			<input autocomplete="off" type="number" class="sheet-input" name="Dex" title="Dex" value="<?php echo "$sheet->Dex"; ?>" />
+			<input autocomplete="off" type="text" class="sheet-input" name="DexMod" title="DexMod" value="<?php echo getMod($sheet->Dex); ?>" readonly />
+			<input autocomplete="off" type="number" class="sheet-input" name="DexTemp" title="DexTemp" value="<?php echo "$sheet->DexTemp"; ?>" />
+			<input autocomplete="off" type="text" class="sheet-input" name="DexTempMod" title="DexTempMod" value="<?php echo getMod($sheet->DexTemp); ?>" readonly />
 		</div>
-		<div class="tr">
-			<div class="th">INT</div>
-			<div class="td"><input autocomplete="off" type="number" class="sheet-input" name="IntScore" title="IntScore" value="<?php echo "$sheet->IntScore"; ?>" /></div>
-			<div class="td"><input autocomplete="off" type="text" class="sheet-input" name="IntMod" title="IntMod" value="<?php echo getMod($sheet->IntScore); ?>" readonly/></div>
-			<div class="td"><input autocomplete="off" type="number" class="sheet-input" name="IntTemp" title="IntTemp" value="<?php echo "$sheet->IntTemp"; ?>" /></div>
-			<div class="td"><input autocomplete="off" type="text" class="sheet-input" name="IntTempMod" title="IntTempMod" value="<?php echo getMod($sheet->IntTemp); ?>" readonly /></div>
+		<div class="ability-block">
+			<div class="header-block">CON</div>
+			<input autocomplete="off" type="number" class="sheet-input" name="Con" title="Con" value="<?php echo "$sheet->Con"; ?>" />
+			<input autocomplete="off" type="text" class="sheet-input" name="ConMod" title="ConMod" value="<?php echo getMod($sheet->Con); ?>" readonly />
+			<input autocomplete="off" type="number" class="sheet-input" name="ConTemp" title="ConTemp" value="<?php echo "$sheet->ConTemp"; ?>" />
+			<input autocomplete="off" type="text" class="sheet-input" name="ConTempMod" title="ConTempMod" value="<?php echo getMod($sheet->ConTemp); ?>" readonly />
 		</div>
-		<div class="tr">
-			<div class="th">WIS</div>
-			<div class="td"><input autocomplete="off" type="number" class="sheet-input" name="Wis" title="Wis" value="<?php echo "$sheet->Wis"; ?>" /></div>
-			<div class="td"><input autocomplete="off" type="text" class="sheet-input" name="WisMod" title="WisMod" value="<?php echo getMod($sheet->Wis); ?>" readonly /></div>
-			<div class="td"><input autocomplete="off" type="number" class="sheet-input" name="WisTemp" title="WisTemp" value="<?php echo "$sheet->WisTemp"; ?>" /></div>
-			<div class="td"><input autocomplete="off" type="text" class="sheet-input" name="WisTempMod" title="WisTempMod" value="<?php echo getMod($sheet->WisTemp); ?>" readonly /></div>
+		<div class="ability-block">
+			<div class="header-block">INT</div>
+			<input autocomplete="off" type="number" class="sheet-input" name="IntScore" title="IntScore" value="<?php echo "$sheet->IntScore"; ?>" />
+			<input autocomplete="off" type="text" class="sheet-input" name="IntMod" title="IntMod" value="<?php echo getMod($sheet->IntScore); ?>" readonly/>
+			<input autocomplete="off" type="number" class="sheet-input" name="IntTemp" title="IntTemp" value="<?php echo "$sheet->IntTemp"; ?>" />
+			<input autocomplete="off" type="text" class="sheet-input" name="IntTempMod" title="IntTempMod" value="<?php echo getMod($sheet->IntTemp); ?>" readonly />
 		</div>
-		<div class="tr">
-			<div class="th">CHA</div>
-			<div class="td"><input autocomplete="off" type="number" class="sheet-input" name="Cha" title="Cha" value="<?php echo "$sheet->Cha"; ?>" /></div>
-			<div class="td"><input autocomplete="off" type="text" class="sheet-input" name="ChaMod" title="ChaMod" value="<?php echo getMod($sheet->Cha); ?>" readonly /></div>
-			<div class="td"><input autocomplete="off" type="number" class="sheet-input" name="ChaTemp" title="ChaTemp" value="<?php echo "$sheet->ChaTemp"; ?>" /></div>
-			<div class="td"><input autocomplete="off" type="text" class="sheet-input" name="ChaTempMod" title="ChaTempMod" value="<?php echo getMod($sheet->ChaTemp); ?>" readonly /></div>
+		<div class="ability-block">
+			<div class="header-block">WIS</div>
+			<input autocomplete="off" type="number" class="sheet-input" name="Wis" title="Wis" value="<?php echo "$sheet->Wis"; ?>" />
+			<input autocomplete="off" type="text" class="sheet-input" name="WisMod" title="WisMod" value="<?php echo getMod($sheet->Wis); ?>" readonly />
+			<input autocomplete="off" type="number" class="sheet-input" name="WisTemp" title="WisTemp" value="<?php echo "$sheet->WisTemp"; ?>" />
+			<input autocomplete="off" type="text" class="sheet-input" name="WisTempMod" title="WisTempMod" value="<?php echo getMod($sheet->WisTemp); ?>" readonly />
 		</div>
-	</div>
-	
-	
-	<div class="table player-health"> 
-		<div class="tr">
-			<div class="td info-row blank"> </div>
-			<div class="td info-row">TOTAL</div>
-			<div class="td info-row">Current HP</div>
-			<div class="td info-row">Nonlethal</div>
-			<div class="td info-row">HD</div>
-		</div>
-		<div class="tr">
-			<div class="th">HP</div>
-			<div class="td"><input autocomplete="off" type="number" class="sheet-input" name="HP" title="HP" value="<?php echo "$sheet->HP"; ?>" /></div>
-			<div class="td"><input autocomplete="off" type="number" class="sheet-input" name="HPWounds" title="HPWounds" value="<?php echo "$sheet->HPWounds"; ?>" /></div>
-			<div class="td"><input autocomplete="off" type="number" class="sheet-input" name="HPNonlethal" title="HPNonlethal" value="<?php echo "$sheet->HPNonlethal"; ?>" /></div>
-			<div class="td"><input autocomplete="off" type="number" class="sheet-input" name="HPHD" title="HPHD" value="<?php echo "$sheet->HPHD"; ?>" /></div>
+		<div class="ability-block">
+			<div class="header-block">CHA</div>
+			<input autocomplete="off" type="number" class="sheet-input" name="Cha" title="Cha" value="<?php echo "$sheet->Cha"; ?>" />
+			<input autocomplete="off" type="text" class="sheet-input" name="ChaMod" title="ChaMod" value="<?php echo getMod($sheet->Cha); ?>" readonly />
+			<input autocomplete="off" type="number" class="sheet-input" name="ChaTemp" title="ChaTemp" value="<?php echo "$sheet->ChaTemp"; ?>" />
+			<input autocomplete="off" type="text" class="sheet-input" name="ChaTempMod" title="ChaTempMod" value="<?php echo getMod($sheet->ChaTemp); ?>" readonly />
 		</div>
 	</div>
 	
 	
-	<div class="table player-defense">
-		<div class="tr">
-			<div class="th">AC</div>
-			<div class="td"><input autocomplete="off" type="number" class="sheet-input ac-mod" name="AC" title="AC" value="<?php echo "$sheet->AC"; ?>" /> <span class="add">=</span></div>
-			<div class="td"><input autocomplete="off" type="number" class="sheet-input ac-mod" name="ACArmor" title="ACArmor" value="<?php echo "$sheet->ACArmor"; ?>" /> <span class="add">+</span></div>
-			<div class="td"><input autocomplete="off" type="number" class="sheet-input ac-mod" name="ACShield" title="ACShield" value="<?php echo "$sheet->ACShield"; ?>" /> <span class="add">+</span></div>
-			<div class="td"><input autocomplete="off" type="number" class="sheet-input ac-mod" name="ACDex" title="ACDex" value="<?php echo "$sheet->ACDex"; ?>" /> <span class="add">+</span></div>
-			<div class="td"><input autocomplete="off" type="number" class="sheet-input ac-mod" name="ACDodge" title="ACDodge" value="<?php echo "$sheet->ACDodge"; ?>" /> <span class="add">+</span></div>
-			<div class="td"><input autocomplete="off" type="number" class="sheet-input ac-mod" name="ACSize" title="ACSize" value="<?php echo "$sheet->ACSize"; ?>" /> <span class="add">+</span></div>
-			<div class="td"><input autocomplete="off" type="number" class="sheet-input ac-mod" name="ACNat" title="ACNat" value="<?php echo "$sheet->ACNat"; ?>" /> <span class="add">+</span></div>
-			<div class="td"><input autocomplete="off" type="number" class="sheet-input ac-mod" name="ACDeflect" title="ACDeflect" value="<?php echo "$sheet->ACDeflect"; ?>" /> <span class="add">+</span></div>
-			<div class="td"><input autocomplete="off" type="number" class="sheet-input ac-mod" name="ACMisc" title="ACMisc" value="<?php echo "$sheet->ACMisc"; ?>" /></div>
+	<div class="player-health static-card"> 
+		
+		<div class="health-block header-block">HP</div>
+		<div class="health-block">
+			<span class="info-row">Max HP</span>
+			<input autocomplete="off" type="number" class="sheet-input" name="HP" title="HP" value="<?php echo "$sheet->HP"; ?>" />
 		</div>
-		<div class="tr">
-			<div class="td info-row blank"> </div>
-			<div class="td info-row">TOTAL</div>
-			<div class="td info-row">Armor</div>
-			<div class="td info-row">Shield</div>
-			<div class="td info-row">Dex</div>
-			<div class="td info-row">Dodge</div>
-			<div class="td info-row">Size</div>
-			<div class="td info-row">Natural</div>
-			<div class="td info-row">Deflect</div>
-			<div class="td info-row">Misc.</div>
+		<div class="health-block">
+			<span class="info-row">Current HP</span>
+			<input autocomplete="off" type="number" class="sheet-input" name="HPWounds" title="HPWounds" value="<?php echo "$sheet->HPWounds"; ?>" />
 		</div>
+		<div class="health-block">
+			<span class="info-row">Temp HP</span>
+			<input autocomplete="off" type="number" class="sheet-input" name="HPTemp" title="HPTemp" value="<?php echo "$sheet->HPTemp"; ?>" />
+		</div>
+		<div class="health-block">
+			<span class="info-row">Nonlethal</span>
+			<input autocomplete="off" type="number" class="sheet-input" name="HPNonlethal" title="HPNonlethal" value="<?php echo "$sheet->HPNonlethal"; ?>" />
+		</div>
+		<div class="health-block">
+			<span class="info-row">HD</span>
+			<input autocomplete="off" type="number" class="sheet-input" name="HPHD" title="HPHD" value="<?php echo "$sheet->HPHD"; ?>" />
+		</div>
+			
 	</div>
 	
 	
-	<div class="table saves"> 
-		<div class="tr">
-			<div class="td info-row blank">Saving Throws</div>
-			<div class="td info-row">Total</div>
-			<div class="td info-row">Base</div>
-			<div class="td info-row">Ability Mod</div>
-			<div class="td info-row">Magic Mod</div>
-			<div class="td info-row">Misc Mod</div>
-			<div class="td info-row">Temp Mod</div>
+	<div class="player-defense static-card">
+		<div class="header-block defense-block">AC</div>
+		<div class="defense-block">
+			<input autocomplete="off" type="number" class="sheet-input ac-mod" name="AC" title="AC" value="<?php echo "$sheet->AC"; ?>" />
+			<span class="add">=</span>
+			<div class="info-row">TOTAL</div>
 		</div>
-		<div class="tr">
-			<div class="th">Fortitude</div>
-			<div class="td"><input autocomplete="off" type="number" class="sheet-input" name="Fort" title="Fort" value="<?php echo "$sheet->Fort"; ?>" /></div>
-			<div class="td"><input autocomplete="off" type="number" class="sheet-input" name="FortBase" title="FortBase" value="<?php echo "$sheet->FortBase"; ?>" /></div>
-			<div class="td"><input autocomplete="off" type="number" class="sheet-input" name="FortAbility" title="FortAbility" value="<?php echo "$sheet->FortAbility"; ?>" /></div>
-			<div class="td"><input autocomplete="off" type="number" class="sheet-input" name="FortMagic" title="FortMagic" value="<?php echo "$sheet->FortMagic"; ?>" /></div>
-			<div class="td"><input autocomplete="off" type="number" class="sheet-input" name="FortMisc" title="FortMisc" value="<?php echo "$sheet->FortMisc"; ?>" /></div>
-			<div class="td"><input autocomplete="off" type="number" class="sheet-input" name="FortTemp" title="FortTemp" value="<?php echo "$sheet->FortTemp"; ?>" /></div>
+		<div class="defense-block">
+			<input autocomplete="off" type="number" class="sheet-input ac-mod" name="ACArmor" title="ACArmor" value="<?php echo "$sheet->ACArmor"; ?>" />
+			<span class="add">+</span>
+			<div class="info-row">Armor</div>
 		</div>
-		<div class="tr">
-			<div class="th">Reflex</div>
-			<div class="td"><input autocomplete="off" type="number" class="sheet-input" name="Reflex" title="Reflex" value="<?php echo "$sheet->Reflex"; ?>" /></div>
-			<div class="td"><input autocomplete="off" type="number" class="sheet-input" name="ReflexBase" title="ReflexBase" value="<?php echo "$sheet->ReflexBase"; ?>" /></div>
-			<div class="td"><input autocomplete="off" type="number" class="sheet-input" name="ReflexAbility" title="ReflexAbility" value="<?php echo "$sheet->ReflexAbility"; ?>" /></div>
-			<div class="td"><input autocomplete="off" type="number" class="sheet-input" name="ReflexMagic" title="ReflexMagic" value="<?php echo "$sheet->ReflexMagic"; ?>" /></div>
-			<div class="td"><input autocomplete="off" type="number" class="sheet-input" name="ReflexMisc" title="ReflexMisc" value="<?php echo "$sheet->ReflexMisc"; ?>" /></div>
-			<div class="td"><input autocomplete="off" type="number" class="sheet-input" name="ReflexTemp" title="ReflexTemp" value="<?php echo "$sheet->ReflexTemp"; ?>" /></div>
+		<div class="defense-block">
+			<input autocomplete="off" type="number" class="sheet-input ac-mod" name="ACShield" title="ACShield" value="<?php echo "$sheet->ACShield"; ?>" />
+			<span class="add">+</span>
+			<div class="info-row">Shield</div>
 		</div>
-		<div class="tr">
-			<div class="th">Will</div>
-			<div class="td"><input autocomplete="off" type="number" class="sheet-input" name="Will" title="Will" value="<?php echo "$sheet->Will"; ?>" /></div>
-			<div class="td"><input autocomplete="off" type="number" class="sheet-input" name="WillBase" title="WillBase" value="<?php echo "$sheet->WillBase"; ?>" /></div>
-			<div class="td"><input autocomplete="off" type="number" class="sheet-input" name="WillAbility" title="WillAbility" value="<?php echo "$sheet->WillAbility"; ?>" /></div>
-			<div class="td"><input autocomplete="off" type="number" class="sheet-input" name="WillMagic" title="WillMagic" value="<?php echo "$sheet->WillMagic"; ?>" /></div>
-			<div class="td"><input autocomplete="off" type="number" class="sheet-input" name="WillMisc" title="WillMisc" value="<?php echo "$sheet->WillMisc"; ?>" /></div>
-			<div class="td"><input autocomplete="off" type="number" class="sheet-input" name="WillTemp" title="WillTemp" value="<?php echo "$sheet->WillTemp"; ?>" /></div>
+		<div class="defense-block">
+			<input autocomplete="off" type="number" class="sheet-input ac-mod" name="ACDex" title="ACDex" value="<?php echo "$sheet->ACDex"; ?>" />
+			<span class="add">+</span>
+			<div class="info-row">Dex</div>
+		</div>
+		<div class="defense-block">
+			<input autocomplete="off" type="number" class="sheet-input ac-mod" name="ACDodge" title="ACDodge" value="<?php echo "$sheet->ACDodge"; ?>" />
+			<span class="add">+</span>
+			<div class="info-row">Dodge</div>
+		</div>
+		<div class="defense-block">
+			<input autocomplete="off" type="number" class="sheet-input ac-mod" name="ACSize" title="ACSize" value="<?php echo "$sheet->ACSize"; ?>" />
+			<span class="add">+</span>
+			<div class="info-row">Size</div>
+		</div>
+		<div class="defense-block">
+			<input autocomplete="off" type="number" class="sheet-input ac-mod" name="ACNat" title="ACNat" value="<?php echo "$sheet->ACNat"; ?>" /> 
+			<span class="add">+</span>
+			<div class="info-row">Natural</div>
+		</div>
+		<div class="defense-block">
+			<input autocomplete="off" type="number" class="sheet-input ac-mod" name="ACDeflect" title="ACDeflect" value="<?php echo "$sheet->ACDeflect"; ?>" /> 
+			<span class="add">+</span>
+			<div class="info-row">Deflect</div>
+		</div>
+		<div class="defense-block">
+			<input autocomplete="off" type="number" class="sheet-input ac-mod" name="ACMisc" title="ACMisc" value="<?php echo "$sheet->ACMisc"; ?>" />
+			<div class="info-row">Misc.</div>
+		</div>
+	</div>
+		
+	
+	
+	<div class="saves static-card"> 
+	
+		<div class="saves-row info-row">
+			<div class="saves-block">Saving Throws</div>
+			<div class="saves-block">Total</div>
+			<div class="saves-block">Base</div>
+			<div class="saves-block">Ability Mod</div>
+			<div class="saves-block">Magic Mod</div>
+			<div class="saves-block">Misc Mod</div>
+			<div class="saves-block">Temp Mod</div>
+		</div>
+		
+		<div class="saves-row">
+			<div class="saves-block">
+				<div class="header-block">Fortitude</div><span></span>
+			</div>
+			<div class="saves-block">
+				<input autocomplete="off" type="number" class="sheet-input" name="Fort" title="Fort" value="<?php echo "$sheet->Fort"; ?>" />
+				<span>=</span>
+			</div>
+			<div class="saves-block">
+				<input autocomplete="off" type="number" class="sheet-input" name="FortBase" title="FortBase" value="<?php echo "$sheet->FortBase"; ?>" />
+				<span>+</span>
+			</div>
+			<div class="saves-block">
+				<input autocomplete="off" type="number" class="sheet-input" name="FortAbility" title="FortAbility" value="<?php echo "$sheet->FortAbility"; ?>" />
+				<span>+</span>
+			</div>
+			<div class="saves-block">
+				<input autocomplete="off" type="number" class="sheet-input" name="FortMagic" title="FortMagic" value="<?php echo "$sheet->FortMagic"; ?>" />
+				<span>+</span>
+			</div>
+			<div class="saves-block">
+				<input autocomplete="off" type="number" class="sheet-input" name="FortMisc" title="FortMisc" value="<?php echo "$sheet->FortMisc"; ?>" />
+				<span>+</span>
+			</div>
+			<div class="saves-block">
+				<input autocomplete="off" type="number" class="sheet-input" name="FortTemp" title="FortTemp" value="<?php echo "$sheet->FortTemp"; ?>" />
+			</div>
+		</div>
+		
+		<div class="saves-row">
+			<div class="saves-block">
+				<div class="header-block">Reflex</div>
+			</div>
+			<div class="saves-block">
+				<input autocomplete="off" type="number" class="sheet-input" name="Reflex" title="Reflex" value="<?php echo "$sheet->Reflex"; ?>" />
+				<span>=</span>
+			</div>
+			<div class="saves-block">
+				<input autocomplete="off" type="number" class="sheet-input" name="ReflexBase" title="ReflexBase" value="<?php echo "$sheet->ReflexBase"; ?>" />
+				<span>+</span>
+			</div>
+			<div class="saves-block">
+				<input autocomplete="off" type="number" class="sheet-input" name="ReflexAbility" title="ReflexAbility" value="<?php echo "$sheet->ReflexAbility"; ?>" />
+				<span>+</span>
+			</div>
+			<div class="saves-block">
+				<input autocomplete="off" type="number" class="sheet-input" name="ReflexMagic" title="ReflexMagic" value="<?php echo "$sheet->ReflexMagic"; ?>" />
+				<span>+</span>
+			</div>
+			<div class="saves-block">
+				<input autocomplete="off" type="number" class="sheet-input" name="ReflexMisc" title="ReflexMisc" value="<?php echo "$sheet->ReflexMisc"; ?>" />
+				<span>+</span>
+			</div>
+			<div class="saves-block">
+				<input autocomplete="off" type="number" class="sheet-input" name="ReflexTemp" title="ReflexTemp" value="<?php echo "$sheet->ReflexTemp"; ?>" />
+			</div>
+		</div>
+		<div class="saves-row">
+			<div class="saves-block">
+				<div class="header-block">Will</div>
+			</div>
+			<div class="saves-block">
+				<input autocomplete="off" type="number" class="sheet-input" name="Will" title="Will" value="<?php echo "$sheet->Will"; ?>" />
+				<span>=</span>
+			</div>
+			<div class="saves-block">
+				<input autocomplete="off" type="number" class="sheet-input" name="WillBase" title="WillBase" value="<?php echo "$sheet->WillBase"; ?>" />
+				<span>+</span>
+			</div>
+			<div class="saves-block">
+				<input autocomplete="off" type="number" class="sheet-input" name="WillAbility" title="WillAbility" value="<?php echo "$sheet->WillAbility"; ?>" />
+				<span>+</span>
+			</div>
+			<div class="saves-block">
+				<input autocomplete="off" type="number" class="sheet-input" name="WillMagic" title="WillMagic" value="<?php echo "$sheet->WillMagic"; ?>" />
+				<span>+</span>
+			</div>
+			<div class="saves-block">
+				<input autocomplete="off" type="number" class="sheet-input" name="WillMisc" title="WillMisc" value="<?php echo "$sheet->WillMisc"; ?>" />
+				<span>+</span>
+			</div>
+			<div class="saves-block">
+				<input autocomplete="off" type="number" class="sheet-input" name="WillTemp" title="WillTemp" value="<?php echo "$sheet->WillTemp"; ?>" />
+			</div>
 		</div>
 	</div>
 	<div>
@@ -310,6 +411,10 @@ function getMod($num) {
 	
 	<div class="damage-reduction">
 	<?php 
+		
+		//var_dump($_SERVER['PHP_SELF']);
+		//var_dump(phpinfo());
+		
 		$dr = $sheet->DamageRed;
 		$drlist = explode('#', $dr);
 		foreach ($drlist as $item) {
@@ -669,6 +774,8 @@ function getMod($num) {
 		
 		rebindChange();
 		bindSkills();
+		bindAC();
+		initialCalc();
 		setZero();
 		$('#loading-overlay').delay(100).fadeOut(750);
 		
@@ -737,11 +844,7 @@ function getMod($num) {
 	<div class='skill-block'><input type='number' autocomplete='off' class='sheet-input' name='SkillRank[]' title='SkillRankT' value='' /></div>
 	<div class='skill-block'><input type='number' autocomplete='off' class='sheet-input' name='SkillMisc[]' title='SkillMiscT' value='' /></div>
 	<div class='skill-block'><input type='number' autocomplete='off' class='sheet-input' name='SkillACP[]' title='SkillACPT' value='' /></div>
-	<div class="skill-block function-buttons">
-		<div class='move-skill-up'>^</div>
-		<div class='move-skill-down'>v</div>
-		<div class='delete-skill'>x</div>
-	</div>
+	<div class='skill-block function-buttons'><div class='move-skill-up'>▲</div><div class='move-skill-down'>▼</div><div class='delete-skill'>&#215;</div></div>
 </div>
 		
 		

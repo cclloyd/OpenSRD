@@ -101,28 +101,47 @@ $('[name="MBABBase"]').bind("propertychange change keyup input paste", function(
 
 
 $('[name="StrTemp"]').bind("propertychange change click keyup input paste", function(event){
-	var num = $('[name="StrTemp"]').val();
-	var isnum = /^\d+$/.test($('[name="StrTemp"]').val());
-	if (!$('[name="StrTemp"]').val()) {
-		console.log("No value exists");
-		$('[name="StrTempMod"]').val(null);
-	}
-	else {
-		if (!isNaN($('[name="StrTemp"]').val())) {
-		console.log("is number");
+	//var num = $('[name="StrTemp"]').val();
+	//var isnum = /^\d+$/.test($('[name="StrTemp"]').val());
+	if (!$('[name="StrTemp"]').val())
+		$('[name="StrTempMod"]').val("");
+	else
 		$('[name="StrTempMod"]').val(getMod($('[name="StrTemp"]').val()));
-		}
-		else {
-			console.log("is not number");
-			$('[name="StrTempMod"]').val(' ');
-		}
-	}
-
-	$('[name="StrTempMod"]').val(getMod($('[name="StrTemp"]').val()));
 });
 
 $('[name="DexTemp"]').bind("propertychange change click keyup input paste", function(event){
-	$('[name="DexTempMod"]').val(getMod($('[name="DexTemp"]').val()));
+	if (!$('[name="DexTemp"]').val())
+		$('[name="DexTempMod"]').val("");
+	else
+		$('[name="DexTempMod"]').val(getMod($('[name="DexTemp"]').val()));
+});
+
+$('[name="ConTemp"]').bind("propertychange change click keyup input paste", function(event){
+	if (!$('[name="ConTemp"]').val())
+		$('[name="ConTempMod"]').val("");
+	else
+		$('[name="ConTempMod"]').val(getMod($('[name="ConTemp"]').val()));
+});
+
+$('[name="IntTemp"]').bind("propertychange change click keyup input paste", function(event){
+	if (!$('[name="IntTemp"]').val())
+		$('[name="IntTempMod"]').val("");
+	else
+		$('[name="IntTempMod"]').val(getMod($('[name="IntTemp"]').val()));
+});
+
+$('[name="WisTemp"]').bind("propertychange change click keyup input paste", function(event){
+	if (!$('[name="WisTemp"]').val())
+		$('[name="WisTempMod"]').val("");
+	else
+		$('[name="WisTempMod"]').val(getMod($('[name="WisTemp"]').val()));
+});
+
+$('[name="ChaTemp"]').bind("propertychange change click keyup input paste", function(event){
+	if (!$('[name="ChaTemp"]').val())
+		$('[name="ChaTempMod"]').val("");
+	else
+		$('[name="ChaTempMod"]').val(getMod($('[name="ChaTemp"]').val()));
 });
 
 var split = location.search.replace('?', '').split('=');
@@ -246,7 +265,7 @@ function skillTotal(skill) {
 	skill_mod += parseInt(skill.find('.skill-rank').val());
 	skill_mod += parseInt(skill.find('.skill-abmod').val());
 	skill_mod += parseInt(skill.find('.skill-misc').val());
-	if (skill.find('.skill-cs-box').val() == 'cs')
+	if (skill.find('.skill-cs-box').is(':checked'))
 		if (!custom_cs)
 			skill_mod += 3;
 	skill.find('.skill-total').val(skill_mod);
@@ -274,11 +293,59 @@ function setZero() {
 	});
 }
 
+
+function initialCalc() {
+	
+	if (!$('[name="StrTemp"]').val())
+		$('[name="StrTempMod"]').val("");
+	else
+		$('[name="StrTempMod"]').val(getMod($('[name="SteTemp"]').val()));
+	
+	if (!$('[name="DexTemp"]').val())
+		$('[name="DexTempMod"]').val("");
+	else
+		$('[name="DexTempMod"]').val(getMod($('[name="DexTemp"]').val()));
+	
+	if (!$('[name="ConTemp"]').val())
+		$('[name="ConTempMod"]').val("");
+	else
+		$('[name="ConTempMod"]').val(getMod($('[name="ConTemp"]').val()));
+	
+	if (!$('[name="IntTemp"]').val())
+		$('[name="IntTempMod"]').val("");
+	else
+		$('[name="IntTempMod"]').val(getMod($('[name="IntTemp"]').val()));
+	
+	if (!$('[name="WisTemp"]').val())
+		$('[name="WisTempMod"]').val("");
+	else
+		$('[name="WisTempMod"]').val(getMod($('[name="WisTemp"]').val()));
+	
+	if (!$('[name="ChaTemp"]').val())
+		$('[name="ChaTempMod"]').val("");
+	else
+		$('[name="ChaTempMod"]').val(getMod($('[name="ChaTemp"]').val()));
+}
+
+
+function bindAC() {
+	$('[name=ACArmor]').bind("propertychange change keyup input paste", function(event){
+			var elem = $(this);
+			$(this).data("timeout", setTimeout(ACTotal(elem.parent().parent()), 250));
+	});
+}
+
+function ACTotal() {
+	
+}
+
+
 function bindSkills() { 
 		
 		$('#custom-cs-rules').change(function() {
 			$('#skills').children().each(function () {
 				if (!$(this).hasClass('info-row')) {
+					
 					console.log($(this));
 					skillTotal($(this));
 				}
@@ -323,6 +390,15 @@ function bindSkills() {
 			setTimeout(function() {
 				skill.remove();
 			}, 500);
+			bindSkills();
 
 		});
 	}
+
+
+
+
+
+
+
+

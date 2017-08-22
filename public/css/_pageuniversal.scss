@@ -62,10 +62,11 @@ textarea, input, button { outline: none; }
 	transition: box-shadow .5s ease;
 }
 .sheet-input {
-	background: rgba(0,0,0,.15);
+	background-color: $input-bg;
 	border: 0;
 	margin: 0;
 	padding: 0;
+	box-sizing: border-box;
 }
 .player-info-title {
 	font-size: 9px;
@@ -86,6 +87,9 @@ textarea, input, button { outline: none; }
 	*
 */
 
+.input-zero {
+	color: $sheet-color-zero; 
+}
 
 .player-info input {
 	font-size: 12px;

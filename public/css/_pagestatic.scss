@@ -23,39 +23,12 @@
 	.table {
 		display: inline-table;
 	}
-	.ability-scores {
-		width: 250px;
-		text-align: center;
-		.td, .th {
-			width: 20%;
-			border: 1px solid black;
-		}
-		.th {
-			background-color: $th-bg;
-			color: $sheet-color
-		}
-		input {
-			width: 100%;
-			background-color: hsl($h, $s, 30);
-			text-align: center;
-		}
-	}
+	
 }
 
 
-.saves {
-	width: 500px;
-	text-align: center;
-	.td, .th {
-		width: 50px;
-	}
-	.info-row {
-		text-align: center;
-	}
-	input {
-		width: 70%;
-	}
-}
+
+
 
 .bab {
 	text-align: center;
@@ -68,9 +41,19 @@
 }
 
 
-.damage-reduction {
-	
+
+
+input {
+	text-align: center;
 }
+
+.static-card {
+	border: $card-border;
+	background: $card-bg;
+	box-shadow: 0 2px 2px hsla($h, $s, 0, .5);
+	margin: 2px;
+	margin-bottom: 5px;
+	padding: 7px; }
 
 
 .player-info {
@@ -84,7 +67,6 @@
 		input {
 			text-align: left;
 			width: 100%;
-			background-color: $input-bg;
 			transition: box-shadow .35s;
 			box-sizing: border-box;
 			padding-left: 5px;
@@ -103,40 +85,122 @@
 	
 }
 
-input {
-	text-align: center;
+
+.ability-scores {
+	width: 250px;
+	min-height: 140px;
+	text-align: left;
+	display: inline-block;
+	float: left;
+	border: $card-border;
+	background-color: $card-bg;
+	.ability-block {
+		display: inline-block;
+		width: 100%;
+		.info-row {
+			display: inline-block;
+			width: 20%;
+			margin: -1px;
+			margin-right: -4px;
+			text-align: center;
+		}
+		.header-block {
+			background-color: $th-bg;
+			color: $sheet-color;
+			display: inline-block;
+		}
+		.header-block, input {
+			text-align: center;
+			width: 20%;
+			box-sizing: border-box;
+			border: 1px solid hsl($h, $s, 5);
+			margin: -1px -4px -1px -1px;
+		}
+	}
 }
+
 
 .player-health {
-	width: 800px;
 	text-align: center;
-	.td {
+	display: inline-block;
+	position: relative;
+	.health-block {
 		width: 50px;
+		height: 35px;
+		display: inline-block;
+		margin-right: 0px;
+		box-sizing: border-box;
+		input {
+			width: 100%;
+			border: 1px solid hsl($h, $s, 5);
+		}
+		.info-row {
+			display: inline-block;
+			width: 100%;
+			line-height: 15px;
+		}
+		
+	}
+	.header-block {
+		background-color: $th-bg; 
+		width: 50px;
+		line-height: 20px;
 		height: 20px;
 	}
-	input {
-		width: 70%;
-		margin: 0;
-		height: inherit;
-		border: 1px solid black;
-
-	}
+	
 }
+
+
+.damage-reduction {
+	
+}
+
+
 .player-defense {
-	width: 800px;
 	text-align: center;
-	.td {
-		width: 50px;
-		height: 20px;
+	display: inline-block;
+	vertical-align: top;
+	.defense-block {
+		width: 70px;
+		height: 30px;
+		display: inline-block;
+		position: relative;
+		margin-left: -4px;
+		input {
+			width: 70%;
+			height: 20px;
+			float: left;
+		}
+		span {
+			width: 30%;
+			float: right;
+			line-height: 20px;
+			font-size: 10px;
+			text-align: center;
+		}
+		.info-row {
+			width: 70%;
+			height: 10px;
+			display: inline-block;
+			float: left;
+		}
 	}
-	.add {
+	.header-block {
+		background: $th-bg;
+		font-weight: bold;
+		height: 20px;
+		width: 50px;
+		float: left;
+	}
+	
+	span {
 		width: 20%;
 		display: inline-block;
 		height: 20px;
 		font-size: 10px;
 	}
 	input {
-		width: 70%;
+		width: 100%;
 		height: inherit;
 		margin: 0;
 		border: 1px solid black;
@@ -144,18 +208,59 @@ input {
 }
 
 
-.add {
-	width: 20px;
+.saves {
+	width: 550px;
 	display: inline-block;
-	height: 20px;
-	font-size: 14px;
+	.saves-row {
+		width: 100%;
+		display: inline-block;
+		margin: 0 2px;
+		.saves-block {
+			display: inline-block;
+			width: 70px;
+			margin-right: -4px;
+		}
+		.saves-block:first-of-type {
+			width: 100px !important;
+			margin-right: 0 !important;
+		}
+		input {
+			width: 50px;
+			border: $sheet-input-border;
+		}
+		span {
+			float: right;
+			width: 20px;
+			line-height: 20px;
+			display: inline-block;
+			text-align: center;
+		}
+		.header-block {
+			text-align: center;
+			display: inline-block;
+			width: 100px;
+			background: $th-bg;
+			border: $sheet-input-border;
+		}
+	}
+	.info-row {
+		text-align: left;
+		display: inline-block;
+		.saves-block {
+			display: inline-block;
+			width: 50px !important;
+			height: 10px;
+			text-align: center;
+			margin-right: 18px !important;
+		}
+	}
+	
 }
 
 
 
 .equipped {
 	width: 100%;
-	//text-align: center;
 	.weapon {
 		
 	}

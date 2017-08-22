@@ -31,9 +31,23 @@
 	$sheet->Name = $_POST['Name'];
 	$sheet->Player = $_POST['Player'];
 	$sheet->Alignment = $_POST['Alignment'];
-	//$sheet->XPCurrent = $_POST['XPCurrent'];
-	//$sheet->XPNext = $_POST['XPNext'];
-	//$sheet->XPChange = $_POST['XPChange'];
+	$sheet->Class = $_POST['Class'];
+	$sheet->Race = $_POST['Race'];
+	$sheet->Campaign = $_POST['Campaign'];
+	$sheet->Deity = $_POST['Deity'];
+	$sheet->Level = $_POST['Level'];
+	$sheet->Size = $_POST['Size'];
+	$sheet->Age = $_POST['Age'];
+	$sheet->Gender = $_POST['Gender'];
+	$sheet->Height = $_POST['Height'];
+	$sheet->Weight = $_POST['Weight'];
+	$sheet->Eyes = $_POST['Eyes'];
+	$sheet->Hair = $_POST['Hair'];
+	$sheet->XPCurrent = $_POST['XPCurrent'];
+	$sheet->XPNext = $_POST['XPNext'];
+	$sheet->XPChange = $_POST['XPChange'];
+	$sheet->XPSpeed = $_POST['XPSpeed'];
+	$sheet->Mythic = $_POST['Mythic'];
 
 	
 	$sheet->Str = $_POST['Str'];
@@ -45,6 +59,7 @@
 
 	$sheet->HP = $_POST['HP'];
 	$sheet->HPWounds = $_POST['HPWounds'];
+	$sheet->HPTemp = $_POST['HPTemp'];
 	$sheet->HPNonlethal = $_POST['HPNonlethal'];
 	$sheet->HPHD = $_POST['HPHD'];
 
@@ -110,6 +125,23 @@
 	Name='$sheet->Name', 
 	Player='$sheet->Player', 
 	Alignment='$sheet->Alignment', 
+	Class='$sheet->Class', 
+	Race='$sheet->Race', 
+	Campaign='$sheet->Campaign', 
+	Deity='$sheet->Deity', 
+	Level='$sheet->Level', 
+	Size='$sheet->Size', 
+	Age='$sheet->Age', 
+	Gender='$sheet->Gender', 
+	Height='$sheet->Height', 
+	Weight='$sheet->Weight', 
+	Eyes='$sheet->Eyes', 
+	Hair='$sheet->Hair', 
+	XPCurrent='$sheet->XPCurrent', 
+	XPNext='$sheet->XPNext', 
+	XPChange='$sheet->XPChange', 
+	XPSpeed='$sheet->XPSpeed', 
+	Mythic='$sheet->Mythic', 
 	
 	Str='$sheet->Str', 
 	Dex='$sheet->Dex', 
@@ -120,6 +152,7 @@
 	
 	HP='$sheet->HP' , 
 	HPWounds='$sheet->HPWounds', 
+	HPTemp='$sheet->HPTemp', 
 	HPNonlethal='$sheet->HPNonlethal', 
 	HPHD='$sheet->HPHD', 
 

@@ -1,3 +1,6 @@
+<?php 	
+define('WEB', '/web/srd.cclloyd.com/public/');
+?>
 <head>
 	<?php include 'meta.php'; ?>
 </head>
@@ -39,7 +42,21 @@ function printMod($val) {
 		<div id="stats">
 			
 		</div>
+		
+		<?php
+			require WEB."DiceCalc/Calc.php";
+			require WEB."DiceCalc/CalcDice.php";
+			require WEB."DiceCalc/CalcOperation.php";
+			require WEB."DiceCalc/CalcSet.php";
+			require WEB."DiceCalc/Random.php";
+		
+		
+			$calc = new Calc("3d6");
+			var_dump($calc);
+		?>
 	</div>
+	
+	
 	
 	
 	
