@@ -1,6 +1,20 @@
 @font-face {
   font-family: Celtic;
   src: url("/font/Celtic.ttf"); }
+/*
+$media-expressions: (screen: "screen", 
+                    handheld: "handheld",
+                    retina2x: 
+                    ("(-webkit-min-device-pixel-ratio: 2)", 
+                    "(min-resolution: 192dpi)")) !default;
+
+@include media("screen", ">=tablet") {
+
+}
+
+@include media(">tablet", "<=desktop", "retina2x") {
+
+}*/
 #logo {
   font-family: 'Celtic';
   font-size: 46px;
@@ -532,7 +546,8 @@ textarea, input, button {
   border: 0;
   margin: 0;
   padding: 0;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  border-radius: 0px; }
 
 .player-info-title {
   font-size: 9px;
@@ -724,7 +739,7 @@ input {
 .static-card {
   border: 1px solid #333333;
   background: #4d4d4d;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
   margin: 2px;
   margin-bottom: 5px;
   padding: 7px; }
@@ -788,7 +803,7 @@ input {
     width: 50px;
     height: 35px;
     display: inline-block;
-    margin-right: 0px;
+    margin-right: 1px;
     box-sizing: border-box; }
     .player-health .health-block input {
       width: 100%;
@@ -851,7 +866,7 @@ input {
   .saves .saves-row {
     width: 100%;
     display: inline-block;
-    margin: 0 2px; }
+    margin: -1px 0; }
     .saves .saves-row .saves-block {
       display: inline-block;
       width: 70px;
@@ -876,7 +891,8 @@ input {
       border: 1px solid #262626; }
   .saves .info-row {
     text-align: left;
-    display: inline-block; }
+    display: inline-block;
+    margin-bottom: 2px; }
     .saves .info-row .saves-block {
       display: inline-block;
       width: 50px !important;

@@ -24,6 +24,21 @@
 
 $h: 210;
 $s: 0; // default: 3
+/*
+$media-expressions: (screen: "screen", 
+                    handheld: "handheld",
+                    retina2x: 
+                    ("(-webkit-min-device-pixel-ratio: 2)", 
+                    "(min-resolution: 192dpi)")) !default;
+
+@include media("screen", ">=tablet") {
+
+}
+
+@include media(">tablet", "<=desktop", "retina2x") {
+
+}*/
+
 
 #logo {
 	font-family: 'Celtic';
