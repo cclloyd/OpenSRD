@@ -53,7 +53,8 @@ function getSheetBlocks($sheetid) {
 <html>
 	
 <head>
-	<?php include WEB.'meta.php'; ?>
+	<?php include WEB.'metamobile.php'; ?>
+	<meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no" />
 </head>
 
 <body>
@@ -64,7 +65,7 @@ function getSheetBlocks($sheetid) {
 	$sheetid = $_GET['id'];	
 	session_start();
 	$_SESSION['currentSheetID'] = $sheetid;
-	include WEB.'header.php';
+	//include WEB.'header.php';
 	//$url = 'https://www.myth-weavers.com/api/v1/sheets/sheets/' . $sheetid;
 	//$sheetJSON = file_get_contents($url);
 	//$sheet = json_decode($sheetJSON);
@@ -99,6 +100,8 @@ function getMod($num) {
 </script>
 <div id="sheet-wrapper" class="sheet-static">
 <form id="sheet" method="post">
+	
+	
 
 	<div id="loading-overlay">
 		<div class="cssload-bell">

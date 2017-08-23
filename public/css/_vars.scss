@@ -1,0 +1,33 @@
+/* CSS Document */
+
+$h: 210; 	// default: 210
+$s: 0;		// default: 3
+
+
+$radius: 2px;
+$sheet-color: #36393e;
+$card-color: #484b52;
+$card-text-color: #c5c5c5;
+//$card-border: #292929;
+$card-header: #585858;
+
+
+$sheet-bg: 			hsl($h, $s, 26);
+$sheet-color: 		hsl($h, $s, 80);
+$sheet-color-zero: 	hsla($h, $s, 80, .5);
+$sheet-input: 		hsl($h, $s, 40);
+$sheet-input-border:1px solid hsl($h, $s, 15);
+$sheet-info-color: 	hsl($h, $s, 50);
+$th-bg: 			hsl($h, $s, 15);
+$input-bg: 			hsl($h, $s, 30);
+
+$card-bg: 			hsl($h, $s, 30);
+$card-border: 		1px solid hsl($h, $s, 20); 
+$card-shadow:		0 2px 2px hsla(0,0,0,.25);
+
+$xbox: #107C10;
+$save-1: #0c4405;
+$save-2: #1a860d;
+$save-3: #4ca306;
+$save-4: #59bc13;
+$duration: 6s;

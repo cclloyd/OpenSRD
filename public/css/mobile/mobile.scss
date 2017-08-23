@@ -1,0 +1,281 @@
+@charset "utf-8";
+
+@import '../_vars.scss';
+
+@mixin fix-padding() {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;	
+}
+
+@mixin disable-highlighting() {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none; /* Webkit */
+	-moz-user-select: none;    /* Firefox */
+	-ms-user-select: none;     /* IE 10  */
+
+	/* Currently not supported in Opera but will be soon */
+	-o-user-select: none;
+	user-select: none;  
+}
+
+@font-face { 
+	font-family: Celtic;
+	src: url('/font/Celtic.ttf');
+}
+
+
+
+
+
+
+
+
+
+#logo {
+	font-family: 'Celtic';
+	font-size: 46px;
+	color: hsl($h,$s,10);
+}
+
+
+html {
+	background-color: hsl($h,$s,15);
+	//background-image: url('/img/headerbgfull.png');
+	background-attachment: fixed;
+	background-position: top center;
+	box-sizing: border-box !important;
+	-webkit-box-sizing: border-box !important;
+	-moz-box-sizing: border-box !important;
+	box-sizing: border-box !important;
+	width: 100%;
+}
+body {
+	background-color: hsl($h,$s,25) ;
+	//background-image: url('/img/headerbgfull2.png');
+	background-attachment: fixed;
+	background-position: top center;
+	font-family: 'Varela';  
+	font-size: 14px;
+	width: 100%;
+	margin: 10px auto;
+	border: 1px solid hsl($h, $s, 6);
+	overflow-x: hidden;
+}
+#wrapper {
+	width: 100%;
+}
+h1 {
+	font-family: Balthazar;
+	font-size: 32px !important;
+}
+
+.internal_url {
+	color: #003965;
+}
+
+@mixin abs-full() {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+@mixin shade-bg($shade) {
+	background-color: rgb($shade, $shade, $shade);
+}
+@mixin shade-color($shade) {
+	color: rgb($shade, $shade, $shade);
+}
+
+.table    { display: inline-table; border-collapse: collapse;}
+.tr       { display: table-row }
+.thead    { display: table-header-group }
+.tbody    { display: table-row-group }
+.tfoot    { display: table-footer-group }
+.col      { display: table-column }
+.colgroup { display: table-column-group }
+.td       { display: table-cell; vertical-align: middle; }
+.th   	  { display: table-cell; vertical-align: middle; font-weight: bold;}
+.caption  { display: table-caption }
+
+
+
+
+
+
+//@import '_siteheader.scss';
+
+@import '../_loading.scss';
+@import '../_pageuniversal.scss';
+@import '../_gridpage.scss';
+//@import '../_pagestatic.scss';
+
+
+.static-card {
+	width: 100%;
+	box-shadow: $card-shadow;
+}
+
+.ability-scores {
+	width: 100%;
+	text-align: center;
+	.ability-block {
+		width: 100%;
+		input, .header-block {
+			width: 20%;
+			height: 30px;
+			line-height: 30px;
+			margin: 0;
+			margin-left: -4px;
+			box-sizing: border-box;
+			border: 1px solid black;
+			text-align: center;
+		}
+		.header-block {
+			display: inline-block;
+		}
+		.info-row {
+			width: 20%;
+			height: 20px;
+			dispaly: inline-block;
+		}
+	}
+	
+}
+
+
+
+
+
+
+
+
+
+#save-banner {
+	text-align: center;
+	position: fixed;
+	z-index: 100000;
+	.run-save-anim {
+		animation-name: xboxanim;
+	}
+	.save-color {
+		width: 300px;
+		height: 40px;
+		position: fixed;
+		top: 25px;
+		display: inline-block;
+		transform-origin: center;
+		//animation-name: expanding; achievementLoaderAnimationFrames
+		transform: scaleX(0.00) scaleY(0.00);
+		left: calc(50% - 150px);
+		//animation-duration: 1.25s;
+		//animation-timing-function: ease-out;
+		animation-fill-mode: forwards;
+		animation-iteration-count: 1;
+		animation-timing-function: ease-in-out;
+		&:nth-of-type(1) {
+			background-color: lighten($xbox, 5%);
+			animation-duration: $duration;
+		}
+		&:nth-of-type(2) {
+            background-color: $xbox;
+            animation-delay: 0.25s;
+            animation-duration: $duration - 0.5;
+        }
+
+        &:nth-of-type(3) {
+            background-color: darken($xbox, 5%);
+            animation-delay: 0.5s;
+            animation-duration: $duration - 1;
+        }
+
+        &:nth-of-type(4) {
+            background-color: $xbox;
+            animation-delay: 0.75s;
+            animation-duration: $duration - 1.5;
+        }
+
+        &:nth-of-type(5) {
+            background-color: lighten($xbox, 5%);
+            animation-delay: 1s;
+            animation-duration: $duration - 2;
+			line-height: 40px;
+			font-weight: bold;
+			text-shadow: 0 -1px 0 rgba(0,0,0,.15), 0 1px 0 rgba(255,255,255,.25);
+			color: darken($xbox, 10%);
+			font-size: 24px;
+        }
+	}
+}
+@keyframes expanding {
+	0% { width: 0%;	margin-left: 0%;		}
+	20% { width: 100%; margin-left: -50%		}
+	20% { width: 100%; margin-left: -50%		}
+}
+@keyframes xboxanim {
+    0% {
+        transform: scaleX(0.00) scaleY(1.00);
+    }
+
+    10% {
+        transform: scaleX(1.00) scaleY(1.00);
+    }
+
+    90% {
+        transform: scaleX(1.00) scaleY(1.00);
+    }
+
+    100% {
+        transform: scaleX(0.00) scaleY(1.00);
+    }
+}
+* {
+	transform-origin: center;
+}
+.bounce {
+	animation-play-state: paused;
+	animation-duration: .35s;
+	animation-fill-mode: forwards;
+	animation-iteration-count: 1;
+	animation-name: bounce-effect;
+	transform-origin: center;
+	animation-play-state: running;
+}
+
+@keyframes bounce-effect {
+	0% { transform: scale(0.50)  }
+	50% { transform: scale(1.025)  }
+	70% { transform: scale(0.975)  }
+	100% { transform: scale(1.00)  }
+}
+
+.button-bounce {
+	animation-duration: .35s;
+	//animation-fill-mode: forwards;
+	animation-iteration-count: infinite;
+	animation-name: button-bounce2;
+	//animation-name: bounce-effect;
+	transform-origin: center;
+	animation-play-state: running;
+}
+
+@keyframes button-bounce {
+	0% { transform: scale(1.00)  }
+	25% { transform: scale(0.925)  }
+	50% { transform: scale(1.025)  }
+	65% { transform: scale(0.925)  }
+	80% { transform: scale(1.025)  }
+	100% { transform: scale(1.00)  }
+}
+
+@keyframes button-bounce2 {
+	0% { transform: scale(1.00)  }
+	25% { transform: scale(0.975)  }
+	50% { transform: scale(1.015)  }
+	65% { transform: scale(0.975)  }
+	80% { transform: scale(1.015)  }
+	100% { transform: scale(1.00)  }
+}
+
+
+
+
